@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GerechtMenu index{% endblock %}
+
+{% block body %}
+    <h1>GerechtMenu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>gerecht Naam</th>
+                <th>menuItem Naam</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gerecht_menu in gerecht_menus %}
+            <tr>
+                <td>{{ gerecht_menu.id }}</td>
+                <td>{{ gerecht_menu.gerecht.naam }}</td>
+                <td>{{ gerecht_menu.menuItem.naam }}</td>
+                <td>
+                    <a href="{{ path('gerecht_menu_show', {'id': gerecht_menu.id}) }}">show</a>
+                    <a href="{{ path('gerecht_menu_edit', {'id': gerecht_menu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gerecht_menu_new') }}">Create new</a>
+{% endblock %}

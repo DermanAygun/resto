@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h4>Reservering: {{ reservering.naam }}</h4>
+
+    <p>Selecteer producten die je wilt bestellen</p>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Bestel') }}</button>
+    {{ form_end(form) }}
+
+{% endblock %}

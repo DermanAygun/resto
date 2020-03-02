@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <div style="display: flex; flex-flow: column; align-items: center; margin-top: 50px;">
+        <div>
+            <div>
+                <h4>Bon</h4>
+            </div>
+
+            <p>Reservering: {{ bestelling.reservering.naam }}</p>
+            <p>Tafel: {{ bestelling.reservering.tafel }}</p>
+
+            <hr>
+
+            {% for reserveringBestelling in reserveringBestellingen %}
+                <p>Product: {{ bestelling.menuItem.naam }} ............. Prijs: €&nbsp;{{ bestelling.menuItem.prijs }},00</p>
+            {% endfor %}
+
+            {% for reserveringBestelling in reserveringBestellingen %}
+                <p>Product: {{ bestelling.barman.drank }} ............. Prijs: €&nbsp;{{ bestelling.barman.prijs }},00</p>
+            {% endfor %}
+
+            <br>
+
+            <p>Totale Prijs: €{{ total }},-</p>
+
+            <hr>
+            <p>Datum: {{ bestelling.datum|date('d-m-Y') }}</p>
+            <p>Tijdstip: {{ bestelling.time|date('H:i') }}</p>
+            <br>
+
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Barman{% endblock %}
+
+{% block body %}
+    <h1>Barman</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ barman.id }}</td>
+            </tr>
+            <tr>
+                <th>Drank</th>
+                <td>{{ barman.drank }}</td>
+            </tr>
+            <tr>
+                <th>Prijs</th>
+                <td>{{ barman.prijs }}</td>
+            </tr>
+            <tr>
+                <th>Beschrijving</th>
+                <td>{{ barman.beschrijving }}</td>
+            </tr>
+            <tr>
+                <th>Alcohol</th>
+                <td>{{ barman.alcohol ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('barman_index') }}">back to list</a>
+
+    <a href="{{ path('barman_edit', {'id': barman.id}) }}">edit</a>
+
+    {{ include('barman/_delete_form.html.twig') }}
+{% endblock %}

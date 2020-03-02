@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('reserveer') }}">Reserveer</a>
+
+    <br><br>
+
+    <a href="{{ path('menu') }}">Menukaart</a>
+
+    <br><br>
+
+    <p>Tafels Overzicht:</p>
+
+    <div style="display: flex;">
+        {% for tafel in tafels %}
+            <p>{{ tafel.nummer }}&nbsp;</p>
+        {% endfor %}
+    </div>
+
+    <div>
+        <p>Beschikbare Tafels:</p>
+        <div style="display: flex;">
+            {% for tafel in tafels %}
+
+                {% if tafel is defined and tafel.gereserveerd == 0 %}
+                    <p>{{ tafel.nummer }}&nbsp;</p>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+
+        <p>Gereserveerde Tafels:</p>
+        <div style="display: flex;">
+            {% for tafel in tafels %}
+
+                {% if tafel is defined and tafel.gereserveerd == 1 %}
+                    <p>{{ tafel.nummer }}&nbsp;</p>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr>
+
+<div>
+
+    <a href="{{ path('reserveer-bestel') }}"><p>Bestellen voor een reservering</p></a>
+
+    <a href="{{ path('tafel_index') }}"><p>Tafels Beheren</p></a>
+
+    <a href="{{ path('reservering_index') }}"><p>Reserveringen Beheren</p></a>
+
+    <a href="{{ path('klant_index') }}"><p>Klanten Beheren</p></a>
+
+
+</div>
+
+
+{% endblock %}

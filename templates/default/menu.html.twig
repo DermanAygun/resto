@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h4>Menukaart</h4>
+
+    <p>Alle Menu's</p>
+
+    <div style="display: flex;">
+
+        {% for menuItem in menuItems %}
+            <div class="card" style="width: 18rem; margin: 1%;">
+                <img style="max-width: 100%;" class="card-img-top" src="{{ asset(menuItem.image) }}">
+                <div class="card-body">
+                        <p class="card-title">{{ menuItem.naam }}</p>
+                        <p class="card-text">€&nbsp;{{ menuItem.prijs }},00</p>
+                    <p class="card-text">Gerechten:</p>
+                    <ul style="list-style-type: none">
+                        <li>test</li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <p>Dranken zonder alcohol:</p>
+
+    {% for barman in barmannen %}
+        {% if barman is defined and barman.alcohol == 0 %}
+            <div class="card" style="width: 18rem; margin: 1%;">
+                {#<img style="max-width: 100%;" class="card-img-top" src="{{ asset(menuItem.image) }}">#}
+                <div class="card-body">
+                    <p class="card-title">{{ barman.drank }}</p>
+                    <p class="card-text">€&nbsp;{{ barman.prijs }},00</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <p>Dranken met alcohol:</p>
+    {% for barman in barmannen %}
+        {% if barman is defined and barman.alcohol == 1 %}
+            <div class="card" style="width: 18rem; margin: 1%;">
+                {#<img style="max-width: 100%;" class="card-img-top" src="{{ asset(menuItem.image) }}">#}
+                <div class="card-body">
+                    <p class="card-title">{{ barman.drank }}</p>
+                    <p class="card-text">€&nbsp;{{ barman.prijs }},00</p>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+
