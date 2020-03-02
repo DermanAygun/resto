@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h1> Bestellen </h1>
+
+    <h2>{{ reservatie.naam }}</h2>
+    <br>
+    <div>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}

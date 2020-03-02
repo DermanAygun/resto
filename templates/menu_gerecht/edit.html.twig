@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MenuGerecht{% endblock %}
+
+{% block body %}
+    <h1>Edit MenuGerecht</h1>
+
+    {{ include('menu_gerecht/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('menu_gerecht_index') }}">back to list</a>
+
+    {{ include('menu_gerecht/_delete_form.html.twig') }}
+{% endblock %}

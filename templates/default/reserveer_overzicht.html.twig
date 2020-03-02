@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h1> Reserveringen </h1>
+    <p>klik op een reservering om te bestellen</p>
+    <div>
+
+        {% for reservatie in reservaties %}
+
+            <div>
+                <a href="{{ path('bestellen', {'id': reservatie.id} ) }}">{{ reservatie.naam }}</a>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

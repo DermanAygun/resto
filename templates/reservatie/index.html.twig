@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservatie index{% endblock %}
+
+{% block body %}
+    <h1>Reservatie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Datum</th>
+                <th>Tijd</th>
+                <th>Tafel</th>
+                <th>Klant</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservatie in reservaties %}
+            <tr>
+                <td>{{ reservatie.id }}</td>
+                <td>{{ reservatie.naam }}</td>
+                <td>{{ reservatie.datum ? reservatie.datum|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservatie.tijd ? reservatie.tijd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservatie.tafel.nummer }}</td>
+                {% if reservatie.klant is not null %}
+                    <td>{{ reservatie.klant.naam }}</td>
+                    {% else %}
+                        <td>NULL</td>
+                    {% endif %}
+
+                <td>
+                    <a href="{{ path('reservatie_show', {'id': reservatie.id}) }}">show</a>
+                    <a href="{{ path('reservatie_edit', {'id': reservatie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reservatie_new') }}">Create new</a>
+{% endblock %}

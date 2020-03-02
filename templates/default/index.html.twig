@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h1> Excellent Taste </h1>
+
+    <div>
+        <a href="{{ path('reserveer') }}"><h4>Reserveer Nu</h4></a>
+        <hr>
+        <a href="{{ path('menukaart') }}"><h4>Bekijk het menukaart</h4></a>
+        <hr>
+        <h4>Tafels Overzicht</h4>
+        <div>
+            <p>Alle Tafels:</p>
+            <div>
+                <div>
+                    {% for tafel in tafels %}
+                        {{ tafel.nummer }}
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+            <p>Beschikbare Tafels:</p>
+            <div>
+                <div>
+                    {% for tafel in tafels %}
+                        {% if tafel is defined and tafel.gereserveerd == 0 %}
+                            {% if tafel.nummer is empty %}
+                                    <p>Helaas zijn we vol geboekt, Probeer eens later.</p>
+                                {% endif %}
+                            {{ tafel.nummer }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+            <p>Gereserveerde Tafels:</p>
+            <div>
+                <div>
+                    {% for tafel in tafels %}
+                        {% if tafel is defined and tafel.gereserveerd == 1 %}
+                            {{ tafel.nummer }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        {#<h4>Admin Paginas</h4>#}
+        {#<div>#}
+            {#<div>#}
+                {#<p>Test</p>#}
+            {#</div>#}
+            {#<div>#}
+                {#<p>Yeet</p>#}
+            {#</div>#}
+        {#</div>#}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h1> Reserveer </h1>
+
+    <div>
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Save') }}</button>
+        {{ form_end(form) }}
+
+    </div>
+
+    <hr>
+    <h4>Tafels Overzicht</h4>
+    <div>
+        <p>Alle Tafels:</p>
+        <div>
+            <div>
+                {% for tafel in tafels %}
+                    {{ tafel.nummer }}
+                {% endfor %}
+            </div>
+        </div>
+        <br>
+        <p>Beschikbare Tafels:</p>
+        <div>
+            <div>
+                {% for tafel in tafels %}
+                    {% if tafel is defined and tafel.gereserveerd == 0 %}
+                            {{ tafel.nummer }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <br>
+        <p>Gereserveerde Tafels:</p>
+        <div>
+            <div>
+                {% for tafel in tafels %}
+                    {% if tafel is defined and tafel.gereserveerd == 1 %}
+                        {{ tafel.nummer }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

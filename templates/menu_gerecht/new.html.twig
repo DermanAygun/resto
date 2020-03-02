@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MenuGerecht{% endblock %}
+
+{% block body %}
+    <h1>Create new MenuGerecht</h1>
+
+    {{ include('menu_gerecht/_form.html.twig') }}
+
+    <a href="{{ path('menu_gerecht_index') }}">back to list</a>
+{% endblock %}

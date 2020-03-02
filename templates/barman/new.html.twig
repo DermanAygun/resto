@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Barman{% endblock %}
+
+{% block body %}
+    <h1>Create new Barman</h1>
+
+    {{ include('barman/_form.html.twig') }}
+
+    <a href="{{ path('barman_index') }}">back to list</a>
+{% endblock %}

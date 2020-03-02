@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h1> Menukaart </h1>
+
+    <p>Alle menus</p>
+    <div>
+        {% for menu in menus %}
+            <p>{{ menu.image }}</p>
+            <p>{{ menu.naam }}</p>
+            {% if menu.beschrijving is empty %}
+                    <p>Geen Beschrijving</p>
+                {% else %}
+                    <p>{{ menu.beschrijving }}</p>
+            {% endif %}
+            <p>{{ menu.prijs }}</p>
+        {% endfor %}
+    </div>
+<hr>
+    <p>Alle Dranken</p>
+    <div>
+        {% for drank in dranken %}
+            <p>{{ drank.drankNaam }}</p>
+            <p>{{ drank.beschrijving }}</p>
+            <p>{{ drank.prijs }}</p>
+            <p>{{ drank.alcohol }}</p>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MenuGerecht{% endblock %}
+
+{% block body %}
+    <h1>MenuGerecht</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ menu_gerecht.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('menu_gerecht_index') }}">back to list</a>
+
+    <a href="{{ path('menu_gerecht_edit', {'id': menu_gerecht.id}) }}">edit</a>
+
+    {{ include('menu_gerecht/_delete_form.html.twig') }}
+{% endblock %}

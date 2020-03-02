@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <h1> Bon </h1>
+
+    <p>Reservering: {{ bestelling.reservatie.naam }}</p>
+    {% if bestelling.reservatie.klant is null %}
+            <p>Gereserveerde: Anoniem</p>
+        {% else %}
+            <p>Gereserveerde: {{ bestelling.reservatie.klant.naam }}</p>
+    {% endif %}
+    <p>Gereserveerde Tafel: {{ bestelling.reservatie.tafel }}</p>
+    <hr>
+    <div>
+
+        {% for bestelling in bestellingen %}
+            {% if bestelling.menuItem is null %}
+            {% else %}
+                <p>Product: {{ bestelling.menuItem.naam }} .... Prijs: {{ bestelling.menuItem.prijs }}</p>
+            {% endif %}
+        {% endfor %}
+
+        {% for bestelling in bestellingen %}
+            {% if bestelling.barman is null %}
+                {% else %}
+                    <p>Product: {{ bestelling.barman.DrankNaam }} .... Prijs: {{ bestelling.barman.prijs }}</p>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+    <p>Totaal: {{ total }}</p>
+    <hr>
+
+    <p>Datum: {{ bestelling.datum|date('d-m-Y') }} | Tijd: {{ bestelling.tijd|date('h:i') }}</p>
+    <br>
+    <p>Excellent Taste</p>
+
+{% endblock %}
